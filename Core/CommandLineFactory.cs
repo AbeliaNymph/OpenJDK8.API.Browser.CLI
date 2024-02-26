@@ -1,4 +1,5 @@
 ﻿
+
 namespace Core;
 
 public class CommandLineFactory
@@ -10,5 +11,8 @@ public class CommandLineFactory
         return new SearchCommand();
     }
 
-    
+    internal void Append(ICommand addCommand)
+    {
+        throw new NotImplementedException();
+    }
 }

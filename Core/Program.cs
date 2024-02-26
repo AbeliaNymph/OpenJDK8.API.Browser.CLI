@@ -8,11 +8,11 @@ internal class Program
     {
         CommandLineFactory factory = new();
 
-        factory.append(new SearchCommand());
-        factory.append(new AddCommand());
+        factory.Append(new SearchCommand());
+        factory.Append(new AddCommand());
 
         ICommand command = factory.Generate(args);
 
-        command.Execute(args)
+        command.Execute(args);
     }
 }
