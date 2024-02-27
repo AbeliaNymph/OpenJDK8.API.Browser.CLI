@@ -1,18 +1,34 @@
 ﻿using Core.Commands.SearchCommand.Impl;
-using Core.Commands.SearchCommand.Input;
 
 namespace Test;
 
 public class SearchCommandTest
 {
+    private SearchCommand _searchCommand;
+
+    [SetUp]
+    public void SetUp()
+    {
+        _searchCommand = new(new FakeClassRepository());
+    }
+
     [Test]
     public void Execute_SearchString_EqualsStringDescription() {
-        SearchCommand searchCommand = new(new FakeClassRepository());
 
         List<string> input = ["search", "String"];
 
-        String obtained = searchCommand.Execute(input);
+        string obtained = _searchCommand.Execute(input);
 
-        Assert.That(obtained, Is.EqualTo("java.lang.String"));
+        Assert.That(obtained, Is.EqualTo("java.lang.String\n"));
+    }
+
+    [Test]
+    public void Execute_SearchBooleanClass_EqualsBooleanDescription() {
+
+        List<string> input = ["search", "Boolean"];
+
+        string obtained = _searchCommand.Execute(input);
+
+        Assert.That(obtained, Is.EqualTo("java.lang.Boolean\n"));
     }
 }

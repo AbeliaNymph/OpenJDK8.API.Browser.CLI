@@ -7,7 +7,16 @@ public class FakeClassRepository : IClassRepository
     public Classes FindListByName(string name)
     {
         if (name == "String") {
-            return new Classes();
+            Classes classes = new();
+            classes.Add(new AClass("String", "java.lang"));
+
+            return classes;
+        }
+        else if (name == "Boolean") {
+            Classes classes = new();
+            classes.Add(new AClass("Boolean", "java.lang"));
+
+            return classes;
         }
 
         throw new NotImplementedException();
