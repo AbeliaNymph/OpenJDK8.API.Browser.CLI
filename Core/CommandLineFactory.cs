@@ -8,11 +8,11 @@ public class CommandLineFactory
 
     public ICommand Generate(List<string> args)
     {
-        return new SearchCommand();
+        return _commands.First(each => each.IsSupport(args));
     }
 
-    internal void Append(ICommand addCommand)
+    public void SignIn(ICommand command)
     {
-        throw new NotImplementedException();
+        _commands.Add(command);
     }
 }

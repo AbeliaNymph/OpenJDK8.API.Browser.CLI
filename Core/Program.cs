@@ -4,15 +4,26 @@ internal class Program
 {
     //oj8api search String
     //oj8api add    
-    private static void Main(List<string> args)
+    private static void Main(string[] args)
     {
+
+
         CommandLineFactory factory = new();
 
-        factory.Append(new SearchCommand());
-        factory.Append(new AddCommand());
+        factory.SignIn(new AddCommand());
+        factory.SignIn(new SearchCommand());
 
-        ICommand command = factory.Generate(args);
+        List<string> argList = new(args);
+        
+        ICommand command = factory.Generate(argList);
 
-        command.Execute(args);
+        try {
+            string result = command.Execute(argList);
+            Console.WriteLine(result);
+        }
+        catch (Exception) {
+            Console.Error.WriteLine("发生了未知错误");
+        }
+        
     }
 }

@@ -3,5 +3,6 @@ namespace Core;
 
 public interface ICommand
 {
-    void Execute(List<string> args);
+    string Execute(List<string> args);
+    bool IsSupport(List<string> args);
 }

@@ -3,11 +3,15 @@ namespace Test;
 
 public class CommandLineFactoryTest
 {
+
+    private CommandLineFactory _factory;
     
     [SetUp]
     public void SetUp() 
     {
-
+        _factory = new();
+        _factory.SignIn(new AddCommand());
+        _factory.SignIn(new SearchCommand());
     }
 
     
@@ -16,9 +20,7 @@ public class CommandLineFactoryTest
     {
         List<string> args = ["search", "String"];
 
-        CommandLineFactory factory = new();
-
-        ICommand obtained = factory.Generate(args);
+        ICommand obtained = _factory.Generate(args);
 
         Assert.That(obtained, Is.InstanceOf(typeof(SearchCommand)));
     }
@@ -28,9 +30,7 @@ public class CommandLineFactoryTest
     {
         List<string> args = ["add", "--className=String"];
 
-        CommandLineFactory factory = new();
-
-        ICommand obtained = factory.Generate(args);
+        ICommand obtained = _factory.Generate(args);
 
         Assert.That(obtained, Is.InstanceOf(typeof(AddCommand)));
     }
