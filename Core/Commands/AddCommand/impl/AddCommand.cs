@@ -1,7 +1,7 @@
 ﻿
-namespace Core.Commands.Impl;
+namespace Core.Commands.AddCommand.Impl;
 
-public class SearchCommand : ICommand
+public class AddCommand : ICommand
 {
     public string Execute(List<string> args)
     {
@@ -10,6 +10,6 @@ public class SearchCommand : ICommand
 
     public bool IsSupport(List<string> args)
     {
-        return args.Count == 2 && args[0].Equals("search");
+        return args.Count > 1 && args[0].Equals("add");
     }
 }

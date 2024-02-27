@@ -1,4 +1,7 @@
 ﻿
+using Core.Commands.AddCommand.Impl;
+using Core.Commands.SearchCommand.Impl;
+
 namespace Test;
 
 public class CommandLineFactoryTest
@@ -11,12 +14,12 @@ public class CommandLineFactoryTest
     {
         _factory = new();
         _factory.SignIn(new AddCommand());
-        _factory.SignIn(new SearchCommand());
+        _factory.SignIn(new SearchCommand(new FakeClassRepository()));
     }
 
     
     [Test]
-    public void TestGenerate_01()
+    public void Generate_InputSearchString_GenerateSearchCommand()
     {
         List<string> args = ["search", "String"];
 
@@ -26,7 +29,7 @@ public class CommandLineFactoryTest
     }
 
     [Test]
-    public void TestGenerate_02()
+    public void Generate_InputAddString_GenerateAddCommand()
     {
         List<string> args = ["add", "--className=String"];
 
