@@ -1,10 +1,10 @@
-﻿
+﻿using Core.Commands;
 
 namespace Core;
 
 public class CommandLineFactory
 {
-    private List<ICommand> _commands = [];
+    private readonly List<ICommand> _commands = [];
 
     public ICommand Generate(List<string> args)
     {

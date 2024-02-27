@@ -1,5 +1,5 @@
 ﻿
-namespace Core;
+namespace Core.Commands.Impl;
 
 public class AddCommand : ICommand
 {
