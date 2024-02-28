@@ -25,4 +25,6 @@ public class Classes : IToDisplayString
 
         return stringBuilder.ToString();
     }
+
+    internal void AddAll(List<AClass> aClasses) => _classes.AddRange(aClasses);
 }

@@ -22,8 +22,8 @@ internal class Program
             string result = command.Execute(argList);
             Console.WriteLine(result);
         }
-        catch (Exception) {
-            Console.Error.WriteLine("发生了未知错误");
+        catch (Exception e) {
+            Console.Error.WriteLine(e);
         }
         
     }
